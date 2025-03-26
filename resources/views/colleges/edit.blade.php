@@ -5,7 +5,7 @@
 <form action="{{ route('colleges.update', $college->id) }}" method="POST">
     @csrf
     @method('PUT')
-    <label>Name:</label>
+    <label>Names:</label>
     <input type="text" name="college_name" value="{{ $college->college_name }}" required>
     <label>Code:</label>
     <input type="text" name="college_code" value="{{ $college->college_code }}" required>
