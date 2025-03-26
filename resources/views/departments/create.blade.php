@@ -23,7 +23,7 @@
     <form action="{{ route('departments.store') }}" method="POST">
         @csrf  <!-- CSRF Protection -->
         <div class="form-group">
-            <label for="college_id">College:</label>
+            <label for="college_id">Colleges:</label>
             <select name="college_id" class="form-control" required>
                 @foreach($colleges as $college)
                     <option value="{{ $college->id }}">{{ $college->college_name }}</option>
@@ -36,7 +36,7 @@
             <input type="text" name="department_name" class="form-control" required>
         </div>
 
-        
+
         <div class="form-group">
             <label for="department_code">Department Codes:</label>
             <input type="text" name="department_code" class="form-control" required>
