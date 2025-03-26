@@ -9,7 +9,7 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>College Code</th>
+                <th>College Codes</th>
                 <th>College Name</th>
                 <th>Actions</th>
             </tr>
