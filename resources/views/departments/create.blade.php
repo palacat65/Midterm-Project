@@ -37,7 +37,7 @@
         </div>
 
         <div class="form-group">
-            <label for="department_code">Department Code:</label>
+            <label for="department_code">Department Codes:</label>
             <input type="text" name="department_code" class="form-control" required>
         </div>
 
