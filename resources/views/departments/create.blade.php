@@ -32,7 +32,7 @@
         </div>
 
         <div class="form-group">
-            <label for="department_name">Department Names:</label>
+            <label for="department_name">Departments Names:</label>
             <input type="text" name="department_name" class="form-control" required>
         </div>
 
