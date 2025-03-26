@@ -19,7 +19,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="college_name" class="form-label fw-bold">College Name</label>
+                    <label for="college_name" class="form-label fw-bold">College Names</label>
                     <input type="text" class="form-control @error('college_name') is-invalid @enderror" 
                            id="college_name" name="college_name" required>
                     @error('college_name')
