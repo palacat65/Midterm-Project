@@ -10,7 +10,7 @@
             <form action="{{ route('colleges.store') }}" method="POST">
                 @csrf
                 <div class="mb-3">
-                    <label for="college_code" class="form-label fw-bold">College Code</label>
+                    <label for="college_code" class="form-label fw-bold">College Codes</label>
                     <input type="text" class="form-control @error('college_code') is-invalid @enderror" 
                            id="college_code" name="college_code" required>
                     @error('college_code')
