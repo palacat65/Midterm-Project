@@ -23,7 +23,6 @@ class CollegeController extends Controller
             'code' => 'required|string|max:255',
             'name' => 'required|string|max:255',
         ]);
-        
              // Convert input to lowercase for case-insensitive checking
              $codeLower = strtolower($request->code);
              $nameLower = strtolower($request->name);
