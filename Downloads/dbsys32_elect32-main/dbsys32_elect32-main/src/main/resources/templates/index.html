@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Rental System Dashboard</title>
+    <style>
+        /* Style for the entire page */
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        /* Style for the header section */
+        header {
+            background-color: #003366;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            padding: 30px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #003366;
+        }
+
+        .nav-buttons {
+            margin-top: 30px;
+        }
+
+        .nav-buttons a {
+            display: inline-block;
+            background-color: #0059b3;
+            color: white;
+            text-decoration: none;
+            padding: 15px 25px;
+            margin: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-buttons a:hover {
+            background-color: #004080;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #ddd;
+            color: #333;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Welcome to the Book Rental System</h1>
+</header>
+
+<div class="container">
+    <h2>Dashboard</h2>
+    <p>Quick access to system management sections:</p>
+
+    <div class="nav-buttons">
+		<a href="/books/manage" class="nav-item">Go to Book Management</a>
+		    <a href="/borrowers/manage" class="nav-item">Go to Borrower Management</a>
+		    <a href="/rentals/manage" class="nav-item">Go to Rental Management</a>
+    </div>
+</div>
+
+<footer>
+    &copy; 2025 Book Rental System
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Rental History</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1 {
+    background-color: #001f3f;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    margin: 0;
+    font-size: 24px;
+  }
+
+  table {
+    width: 90%;
+    margin: 30px auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+
+  th, td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: center;
+  }
+
+  th {
+    background-color: #001f3f;
+    color: white;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  tr:hover {
+    background-color: #eef;
+  }
+
+  nav {
+      text-align: center;
+      padding: 15px 0;
+      background-color: #eaeaea;
+  }
+
+  nav a {
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: bold;
+      color: #2c3e50;
+      transition: color 0.3s;
+  }
+
+  nav a:hover {
+      color: #2980b9;
+  }
+</style>
+</head>
+<body>
+<h1 th:text="'Rental History for Borrower: ' + ${borrower.name}"></h1>
+
+<nav>
+<a th:href="@{/borrowers/manage}">Back to Borrower Management</a>
+</nav>
+
+<table>
+<thead>
+<tr>
+<th>Book Title</th>
+<th>Borrow Date</th>
+<th>Return Date</th>
+<th>Penalty</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody>
+<tr th:if="${#lists.isEmpty(rentals)}">
+    <td colspan="5" style="text-align:center;">No rental history available.</td>
+</tr>
+<tr th:each="r : ${rentalHistory}">
+
+    <td th:text="${r.book.title}"></td>
+    <td th:text="${#dates.format(r.borrowDate, 'yyyy-MM-dd')}"></td>
+    <td th:text="${#dates.format(r.returnDate, 'yyyy-MM-dd')}"></td>
+    <td th:text="${r.penalty}"></td>
+    <td>
+        <button th:onclick="'window.location.href=\'/rentals/pay/' + ${r.rentalID} + '\';'" type="button">Paid</button>
+    </td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

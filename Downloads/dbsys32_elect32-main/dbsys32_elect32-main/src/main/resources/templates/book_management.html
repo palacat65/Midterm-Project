@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Book Management</title>
+    <meta charset="UTF-8">
+</head>
+	<style>
+		
+		/* General styles */
+		body {
+		    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		    background-color: #f9f9f9;
+		    margin: 0;
+		    padding: 0;
+		    color: #333;
+		}
+
+		/* Header and navigation */
+		h1 {
+		    background: linear-gradient(to right, #2c3e50, #1a1f33);
+		    color: white;
+		    padding: 20px;
+		    margin: 0;
+		    text-align: center;
+		}
+
+		/* Navigation links */
+		nav {
+		    text-align: center;
+		    padding: 15px 0;
+		    background-color: #eaeaea;
+		}
+
+		nav a {
+		    text-decoration: none;
+		    margin: 0 10px;
+		    font-weight: bold;
+		    color: #2c3e50;
+		    transition: color 0.3s;
+		}
+
+		nav a:hover {
+		    color: #2980b9;
+		}
+
+		/* Section headings */
+		h2 {
+		    color: #2c3e50;
+		    text-align: center;
+		    margin-top: 20px;
+		}
+
+		/* Form styling */
+		form {
+		    background-color: #fff;
+		    max-width: 500px;
+		    margin: 20px auto;
+		    padding: 20px;
+		    border-radius: 10px;
+		    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		}
+
+		label {
+		    display: block;
+		    margin-top: 15px;
+		    font-weight: bold;
+		}
+
+		input[type="text"],
+		select {
+		    width: 100%;
+		    padding: 8px;
+		    margin-top: 5px;
+		    border-radius: 5px;
+		    border: 1px solid #ccc;
+		}
+
+		button {
+		    display: block;
+		    margin-top: 20px;
+		    background-color: #007bff;
+		    color: white;
+		    padding: 10px;
+		    width: 100%;
+		    border: none;
+		    border-radius: 6px;
+		    cursor: pointer;
+		    font-size: 16px;
+		}
+
+		button:hover {
+		    background-color: #0056b3;
+		}
+
+		/* Book table */
+		table {
+		    width: 90%;
+		    margin: 30px auto;
+		    border-collapse: collapse;
+		    background-color: #fff;
+		    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+		}
+
+		th, td {
+		    padding: 12px;
+		    text-align: left;
+		    border-bottom: 1px solid #ddd;
+		}
+
+		th {
+		    background-color: #007bff;
+		    color: white;
+		}
+
+		tr:nth-child(even) {
+		    background-color: #f2f2f2;
+		}
+
+		td a {
+		    color: #007bff;
+		    text-decoration: none;
+		}
+
+		td a:hover {
+		    text-decoration: underline;
+		}
+
+		/* Footer */
+		footer {
+		    text-align: center;
+		    padding: 15px;
+		    font-size: 14px;
+		    color: #888;
+		}
+	</style>
+<body>
+    <h1>Book Management</h1>
+
+    <!-- Navigation -->
+    <nav>
+        <a th:href="@{/}">Back to Dashboard</a> |
+        <a th:href="@{/borrowers/manage}">Manage Borrowers</a> |
+        <a th:href="@{/rentals/manage}">Manage Rentals</a>
+    </nav>
+
+    <!-- Book Form -->
+	<h2 th:text="${book.bookID == 0} ? 'Add New Book' : 'Edit Book'"></h2>
+
+	<form th:action="@{/books/save}" th:object="${book}" method="post">
+	    <input type="hidden" th:field="*{bookID}" />
+
+	    <label>Title:</label>
+	    <input type="text" th:field="*{title}" required><br/>
+
+	    <label>Author:</label>
+	    <input type="text" th:field="*{author}" required><br/>
+
+	    <label>Genre:</label>
+	    <input type="text" th:field="*{genre}"><br/>
+
+	    <label>Status:</label>
+	    <select th:field="*{status}">
+	        <option value="Available">Available</option>
+	        <option value="Borrowed">Borrowed</option>
+	    </select><br/>
+
+	    <button type="submit" th:text="${book.bookID == 0} ? 'Add Book' : 'Update Book'"></button>
+	</form>
+
+
+    <!-- Book Table -->
+    <h2>All Books</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th><th>Title</th><th>Author</th><th>Genre</th><th>Status</th><th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="b : ${books}">
+				<td th:text="${b.bookID}"></td>
+                <td th:text="${b.title}"></td>
+                <td th:text="${b.author}"></td>
+                <td th:text="${b.genre}"></td>
+                <td th:text="${b.status}"></td>
+                <td>
+                    <a th:href="@{'/books/edit/' + ${b.bookID}}">Edit</a> |
+                    <a th:href="@{'/books/delete/' + ${b.bookID}}" onclick="return confirm('Delete this book?')">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
